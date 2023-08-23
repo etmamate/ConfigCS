@@ -61,11 +61,16 @@ public class Screen extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==cfgButton){
+                if (e.getSource() == cfgButton) {
                     System.out.println(dotCheckBox.isSelected());
-                    if(dotCheckBox.isSelected()){
-                        System.out.println("Ta selecionado");
-                    }else{
+                    if (dotCheckBox.isSelected()) {
+                        File file = new File("file.txt");
+                        try (FileWriter fileWriter = new FileWriter("file.txt")) {
+                            fileWriter.write("cl_crosshairdot 1");
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    } else {
                         System.out.println("ta nao o");
                     }
                 }
