@@ -100,21 +100,20 @@ public class Screen extends JFrame {
                     } else {
                         System.out.println("ta nao o");
                     }
-                if (e.getSource() == cfgButton) {
-                    if (colorGreen.isSelected()) {
-                        System.out.println(colorGreen.isSelected());
-                        try (FileWriter fileWriter = new FileWriter("cfg.txt")) {
-                            fileWriter.write("cl_crosshaircolor 1");
-                            fileWriter.close();
-                        } catch (Exception e1) {
-                            // TODO: handle exception
-                        }
-
-                        }
-                    }
                 }
             }
 
+        });
+
+        cfgButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == cfgButton){
+                    
+                }
+            }
+            
         });
     }
 
