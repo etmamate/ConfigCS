@@ -26,10 +26,10 @@ public class Screen extends JFrame {
         // Layout
         setLayout(null);
 
-        // CheckBox
+        // CheckBox Ponto na Mira
         JCheckBox dotCheckBox = new JCheckBox();
         dotCheckBox.setText("Ponto na Mira");
-        dotCheckBox.setBounds(200, 100, 110, 20);
+        dotCheckBox.setBounds(50, 40, 110, 20);
 
         dotCheckBox.setForeground(new Color(255, 255, 255));
         dotCheckBox.setFocusable(false);
@@ -47,8 +47,33 @@ public class Screen extends JFrame {
         });
 
         add(dotCheckBox);
+
+        // Check Box CorMira
+        JCheckBox colorGreen = new JCheckBox();
+        colorGreen.setText("Mira Cor Verde");
+
+        colorGreen.setBounds(50, 80, 110, 20);
+
+        colorGreen.setForeground(new Color(0, 255, 0));
+        colorGreen.setFocusable(false);
+        colorGreen.setBackground(new Color(11, 0, 28));
+        colorGreen.isDisplayable();
+
+        // Action
+        colorGreen.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+
+        add(colorGreen);
+
         // Botao CFG
         JButton cfgButton = new JButton();
+
         cfgButton.setText("CFG");
         cfgButton.setBounds(720, 10, 60, 30);
 
@@ -63,15 +88,29 @@ public class Screen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == cfgButton) {
                     System.out.println(dotCheckBox.isSelected());
+                    File file = new File("file.txt");
+
                     if (dotCheckBox.isSelected()) {
-                        File file = new File("file.txt");
-                        try (FileWriter fileWriter = new FileWriter("file.txt")) {
+                        try (FileWriter fileWriter = new FileWriter("cfg.txt")) {
                             fileWriter.write("cl_crosshairdot 1");
+                            fileWriter.close();
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
                     } else {
                         System.out.println("ta nao o");
+                    }
+                if (e.getSource() == cfgButton) {
+                    if (colorGreen.isSelected()) {
+                        System.out.println(colorGreen.isSelected());
+                        try (FileWriter fileWriter = new FileWriter("cfg.txt")) {
+                            fileWriter.write("cl_crosshaircolor 1");
+                            fileWriter.close();
+                        } catch (Exception e1) {
+                            // TODO: handle exception
+                        }
+
+                        }
                     }
                 }
             }
